@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetLegal Travel - Mascotas legales, destinos reales</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #1e3a5f;
+            background: #f0f7ff;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '🐩';
+            position: absolute;
+            font-size: 15rem;
+            opacity: 0.1;
+            top: -3rem;
+            right: -2rem;
+            transform: rotate(-15deg);
+        }
+
+        header::after {
+            content: '🐩';
+            position: absolute;
+            font-size: 12rem;
+            opacity: 0.1;
+            bottom: -2rem;
+            left: -2rem;
+            transform: rotate(15deg);
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header .tagline {
+            font-size: 1.4rem;
+            font-style: italic;
+            margin: 0.5rem 0;
+            font-weight: 300;
+        }
+
+        header .location {
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #1e40af;
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav li {
+            flex: 1;
+            min-width: 120px;
+        }
+
+        nav a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+
+        nav a:hover {
+            background: rgba(255,255,255,0.15);
+            border-bottom-color: #60a5fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(30, 64, 175, 0.1);
+        }
+
+        .section h2 {
+            color: #1e40af;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section h2::after {
+            content: '🐩';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+        }
+
+        .mission-vision {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(59, 130, 246, 0.15);
+            transition: all 0.3s;
+            border: 2px solid #93c5fd;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(59, 130, 246, 0.25);
+            border-color: #3b82f6;
+        }
+
+        .card h3 {
+            color: #1e40af;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: #1e3a5f;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(59, 130, 246, 0.15);
+            transition: all 0.3s;
+            border-left: 6px solid #3b82f6;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '🐩';
+            position: absolute;
+            font-size: 6rem;
+            opacity: 0.05;
+            bottom: -1rem;
+            right: -1rem;
+            transform: rotate(-20deg);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.25);
+            border-left-color: #1e40af;
+        }
+
+        .service-card h3 {
+            color: #1e40af;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .service-card p {
+            color: #334155;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .service-card ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .service-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #475569;
+        }
+
+        .service-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #3b82f6;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .price {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            color: white;
+            font-size: 1.6rem;
+            font-weight: bold;
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+        }
+
+        .special-package {
+            border-left-color: #f59e0b;
+            background: linear-gradient(135deg, #fffbeb 0%, white 100%);
+        }
+
+        .special-package h3 {
+            color: #d97706;
+        }
+
+        .special-package .price {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .value-item {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            padding: 2rem 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 6px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .value-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 25px rgba(59, 130, 246, 0.4);
+        }
+
+        .value-item h4 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .value-item p {
+            font-size: 0.95rem;
+            opacity: 0.95;
+        }
+
+        .benefits {
+            background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%);
+            padding: 2.5rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+            border: 2px solid #93c5fd;
+        }
+
+        .benefits h3 {
+            color: #1e40af;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            text-align: center;
+        }
+
+        .benefits ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .benefits li {
+            padding: 1.2rem;
+            background: white;
+            border-radius: 10px;
+            padding-left: 3rem;
+            position: relative;
+            box-shadow: 0 3px 8px rgba(59, 130, 246, 0.1);
+            color: #334155;
+            font-weight: 500;
+        }
+
+        .benefits li::before {
+            content: '🐾';
+            position: absolute;
+            left: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-section::before {
+            content: '🐩';
+            position: absolute;
+            font-size: 20rem;
+            opacity: 0.08;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(15deg);
+        }
+
+        .contact-section h2 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-section h2::after {
+            display: none;
+        }
+
+        .contact-intro {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: white;
+            color: #1e40af;
+            padding: 1.2rem 1.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            font-size: 1rem;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            background: #eff6ff;
+        }
+
+        footer {
+            background: #1e3a5f;
+            color: white;
+            text-align: center;
+            padding: 2.5rem 1rem;
+            margin-top: 0;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        .poodle-icon {
+            font-size: 2rem;
+            display: inline-block;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            header .tagline {
+                font-size: 1.1rem;
+            }
+            
+            .section h2 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav li {
+                min-width: 100%;
+            }
+
+            .contact-links {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="poodle-icon">🐩</div>
+            <h1>PetLegal Travel S.A.S</h1>
+            <p class="tagline">"Mascotas legales, destinos reales"</p>
+            <p class="location">📍 Cartagena - Colombia</p>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#inicio">🏠 Inicio</a></li>
+            <li><a href="#mision-vision">🎯 Misión y Visión</a></li>
+            <li><a href="#servicios">🐶 Servicios</a></li>
+            <li><a href="#valores">⭐ Valores</a></li>
+            <li><a href="#contacto">📞 Contacto</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="mision-vision" class="section">
+            <h2>Nuestra Esencia</h2>
+            <div class="mission-vision">
+                <div class="card">
+                    <h3>🎯 Misión</h3>
+                    <p>En PetLegal Travel S.A.S nuestro compromiso consiste en facilitar el transporte de las mascotas, ofreciendo un servicio jurídico administrativo en la expedición de seguros, permisos y certificados sanitarios para el viaje de la mascota.</p>
+                </div>
+                <div class="card">
+                    <h3>🚀 Visión</h3>
+                    <p>Ser la empresa líder en Colombia en gestión de permisos y seguros para mascotas que le faciliten el transporte aéreo, garantizando la seguridad, bienestar y comodidad del animal, en alianza con las aerolíneas y veterinarias certificadas por el ICA y así poder ofrecer soluciones eficientes para los viajeros y sus mascotas.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="servicios" class="section">
+            <h2>Portafolio de Servicios</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>1. Asesoría Legal para Viajes de Mascotas</h3>
+                    <p>Orientación completa sobre los requisitos nacionales e internacionales, regulaciones del ICA, y documentación exigida por aerolíneas y países destino.</p>
+                    <ul>
+                        <li>Evaluación personalizada del caso</li>
+                        <li>Revisión de normatividad según país</li>
+                        <li>Acompañamiento en la gestión inicial</li>
+                    </ul>
+                    <div class="price">$150.000 COP</div>
+                </div>
+
+                <div class="service-card">
+                    <h3>2. Trámite de Certificado Sanitario Internacional (ICA)</h3>
+                    <p>Gestión integral del certificado requerido por el ICA para que tu mascota salga del país sin inconvenientes.</p>
+                    <ul>
+                        <li>Revisión del esquema de vacunación y microchip</li>
+                        <li>Programación de cita y seguimiento con el ICA</li>
+                        <li>Entrega del documento validado</li>
+                    </ul>
+                    <div class="price">$230.000 COP</div>
+                </div>
+
+                <div class="service-card">
+                    <h3>3. Gestión de Permisos para Vuelos</h3>
+                    <p>Nos encargamos de todos los trámites exigidos por aerolíneas y autoridades sanitarias para viajes dentro o fuera del país.</p>
+                    <ul>
+                        <li>Formatos y certificados de transporte</li>
+                        <li>Coordinación con aerolínea</li>
+                        <li>Verificación final antes del vuelo</li>
+                    </ul>
+                    <div class="price">
+                        Nacional: $180.000 COP<br>
+                        Internacional: $320.000 COP
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <h3>4. Acompañamiento Veterinario y Certificado de Salud</h3>
+                    <p>Coordinamos la revisión médica con veterinarios aliados y emitimos el certificado de salud oficial requerido.</p>
+                    <ul>
+                        <li>Cita y valoración profesional</li>
+                        <li>Certificación legal para transporte aéreo</li>
+                        <li>Seguimiento de vacunas y microchip</li>
+                    </ul>
+                    <div class="price">$160.000 COP</div>
+                </div>
+
+                <div class="service-card">
+                    <h3>5. Traducción Oficial de Documentos Veterinarios</h3>
+                    <p>Traducción profesional y validada al idioma requerido (inglés, francés, alemán, entre otros).</p>
+                    <ul>
+                        <li>Traducción certificada y revisión terminológica</li>
+                        <li>Entrega en formato físico o digital</li>
+                    </ul>
+                    <div class="price">$100.000 COP por documento</div>
+                </div>
+
+                <div class="service-card special-package">
+                    <h3>6. Paquete Integral "Viaje Legal y Seguro" ⭐</h3>
+                    <p><strong>La opción más completa</strong> para quienes buscan tranquilidad total. Nosotros gestionamos todo el proceso, desde la asesoría hasta la entrega final de documentos.</p>
+                    <ul>
+                        <li>Asesoría legal personalizada</li>
+                        <li>Trámite ICA + aerolínea + certificado veterinario</li>
+                        <li>Revisión final de requisitos</li>
+                    </ul>
+                    <div class="price">$550.000 COP</div>
+                </div>
+            </div>
+
+            <div class="benefits">
+                <h3>💼 Beneficios Pet Legal Travel</h3>
+                <ul>
+                    <li>Atención profesional con respaldo jurídico y veterinario</li>
+                    <li>Cumplimiento garantizado de normativas nacionales e internacionales</li>
+                    <li>Servicio personalizado y confiable</li>
+                    <li>Amor, ética y compromiso con tu mascota</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="valores" class="section">
+            <h2>Nuestros Valores</h2>
+            <p style="text-align: center; margin-bottom: 2rem; font-size: 1.1rem; color: #334155;">En Pet Legal Travel, nos mueven valores que garantizan que tu mascota viaje segura y legalmente:</p>
+            <div class="values-grid">
+                <div class="value-item">
+                    <h4>❤️ Amor por los Animales</h4>
+                    <p>Tu mascota es nuestra prioridad</p>
+                </div>
+                <div class="value-item">
+                    <h4>🔍 Transparencia</h4>
+                    <p>Información clara en cada paso</p>
+                </div>
+                <div class="value-item">
+                    <h4>🤝 Confianza</h4>
+                    <p>Su tranquilidad es nuestro compromiso</p>
+                </div>
+                <div class="value-item">
+                    <h4>⭐ Excelencia</h4>
+                    <p>Profesionalismo en cada trámite</p>
+                </div>
+                <div class="value-item">
+                    <h4>💪 Compromiso</h4>
+                    <p>Contigo y tu mascota hasta el destino final</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="section">
+            <div class="contact-section">
+                <h2>Contáctanos</h2>
+                <p class="contact-intro">Estamos listos para ayudarte con el viaje de tu mascota 🐩</p>
+                <div class="contact-links">
+                    <a href="https://wa.me/573024504032" target="_blank" class="contact-btn">
+                        📱 WhatsApp
+                    </a>
+                    <a href="mailto:petlegaltravel@gmail.com" class="contact-btn">
+                        📧 Email
+                    </a>
+                    <a href="https://www.instagram.com/petlegaltravels.a.s" target="_blank" class="contact-btn">
+                        📸 Instagram
+                    </a>
+                    <a href="https://www.facebook.com/share/1C3tP79xBC/" target="_blank" class="contact-btn">
+                        👥 Facebook
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p><strong>PetLegal Travel S.A.S</strong></p>
+        <p>Cartagena, Colombia</p>
+        <p style="margin-top: 1rem; font-size: 1.1rem;">Mascotas legales, destinos reales 🐩</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">&copy; 2024 Todos los derechos reservados</p>
+    </footer>
+</body>
+</html>
